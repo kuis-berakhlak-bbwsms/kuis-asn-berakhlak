@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uji Pemahaman Budaya Kerja ASN – BBWS Mesuji Sekampung</title>
+<style>
+  :root {
+    --navy: #0d2243;
+    --navy-mid: #163560;
+    --navy-light: #1e4a84;
+    --gold: #c9a227;
+    --gold-light: #f0c94d;
+    --gold-pale: #fdf3d0;
+    --white: #ffffff;
+    --gray-light: #f0f4f8;
+    --gray-mid: #d1dce8;
+    --gray-text: #5a6a7e;
+    --green: #1a7f4e;
+    --red: #b91c1c;
+    --shadow: 0 4px 24px rgba(13,34,67,0.13);
+    --radius: 14px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #0a1a35 100%);
+    min-height: 100vh;
+    color: var(--navy);
+  }
+
+  /* ── HEADER ── */
+  .app-header {
+    background: linear-gradient(90deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-bottom: 3px solid var(--gold);
+    padding: 18px 24px 14px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 18px rgba(0,0,0,0.35);
+  }
+  .logo-circle {
+    width: 54px; height: 54px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; flex-shrink: 0;
+    box-shadow: 0 2px 10px rgba(201,162,39,0.4);
+  }
+  .header-text { flex: 1; }
+  .header-title {
+    font-size: clamp(15px, 2.5vw, 20px);
+    font-weight: bold;
+    color: var(--gold-light);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+  }
+  .header-sub {
+    font-size: clamp(11px, 1.8vw, 13px);
+    color: var(--gray-mid);
+    font-family: 'Arial', sans-serif;
+    margin-top: 2px;
+  }
+
+  /* ── TIMER BADGE (shown during quiz) ── */
+  .timer-badge {
+    background: var(--navy);
+    border: 2px solid var(--gold);
+    border-radius: 10px;
+    padding: 6px 14px;
+    color: var(--gold-light);
+    font-family: 'Courier New', monospace;
+    font-size: clamp(14px, 2.5vw, 18px);
+    font-weight: bold;
+    letter-spacing: 2px;
+    min-width: 90px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+  .timer-badge.warning { background: #7f1d1d; border-color: #ef4444; color: #fca5a5; }
+
+  /* ── MAIN WRAPPER ── */
+  .main { max-width: 860px; margin: 0 auto; padding: 28px 16px 60px; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 32px 28px;
+    margin-bottom: 20px;
+  }
+
+  /* ── SCREEN REGISTRATION ── */
+  .reg-title {
+    font-size: clamp(16px, 3vw, 22px);
+    color: var(--navy);
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+  .reg-subtitle {
+    font-size: 13px;
+    color: var(--gray-text);
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 24px;
+    line-height: 1.6;
+    border-left: 3px solid var(--gold);
+    padding-left: 10px;
+  }
+  .form-group { margin-bottom: 18px; }
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    color: var(--navy-mid);
+    margin-bottom: 6px;
+    font-family: 'Arial', sans-serif;
+    letter-spacing: 0.3px;
+  }
+  .form-input {
+    width: 100%;
+    padding: 11px 14px;
+    border: 2px solid var(--gray-mid);
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    color: var(--navy);
+    background: var(--gray-light);
+  }
+  .form-input:focus {
+    border-color: var(--navy-light);
+    box-shadow: 0 0 0 3px rgba(30,74,132,0.12);
+    background: var(--white);
+  }
+
+  /* info box */
+  .info-box {
+    background: var(--gold-pale);
+    border: 1.5px solid var(--gold);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 22px;
+  }
+  .info-box h4 {
+    font-size: 13px;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-family: 'Arial', sans-serif;
+  }
+  .info-box ul {
+    list-style: none;
+    font-size: 12.5px;
+    font-family: 'Arial', sans-serif;
+    color: #4a3800;
+    line-height: 1.8;
+  }
+  .info-box ul li::before { content: "✦ "; color: var(--gold); }
+
+  /* ── BUTTONS ── */
+  .btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.15s, box-shadow 0.15s, opacity 0.2s;
+    letter-spacing: 0.4px;
+  }
+  .btn:active { transform: scale(0.97); }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--navy-light) 0%, var(--navy) 100%);
+    color: var(--white);
+    box-shadow: 0 3px 12px rgba(13,34,67,0.3);
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+  }
+  .btn-primary:hover { box-shadow: 0 5px 20px rgba(13,34,67,0.4); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-gold {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--navy);
+    box-shadow: 0 3px 12px rgba(201,162,39,0.35);
+  }
+  .btn-gold:hover { box-shadow: 0 5px 20px rgba(201,162,39,0.5); }
+
+  /* ── PROGRESS BAR ── */
+  .progress-wrap {
+    background: var(--gray-light);
+    border-radius: 50px;
+    height: 8px;
+    margin: 14px 0 4px;
+    overflow: hidden;
+  }
+  .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--navy-light), var(--gold));
+    border-radius: 50px;
+    transition: width 0.4s ease;
+  }
+  .progress-label {
+    font-size: 12px;
+    color: var(--gray-text);
+    font-family: 'Arial', sans-serif;
+    text-align: right;
+    margin-bottom: 16px;
+  }
+
+  /* ── QUESTION CARD ── */
+  .q-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .q-meta { display: flex; gap: 8px; flex-wrap: wrap; }
+  .badge {
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+  }
+  .badge-kategori { background: var(--navy); color: var(--gold-light); }
+  .badge-mudah    { background: #d1fae5; color: #065f46; }
+  .badge-sedang   { background: #dbeafe; color: #1e40af; }
+  .badge-sulit    { background: #fef3c7; color: #92400e; }
+  .badge-sangat-sulit { background: #fce7f3; color: #9d174d; }
+  .badge-poin     { background: var(--gold-pale); color: var(--navy); border: 1px solid var(--gold); }
+  .q-number {
+    font-size: 12px;
+    color: var(--gray-text);
+    font-family: 'Arial', sans-serif;
+    white-space: nowrap;
+    font-weight: bold;
+  }
+  .q-text {
+    font-size: clamp(14px, 2.2vw, 15.5px);
+    color: var(--navy);
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+
+  /* Options */
+  .options { display: flex; flex-direction: column; gap: 10px; }
+  .option-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 2px solid var(--gray-mid);
+    border-radius: 9px;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+    font-family: 'Arial', sans-serif;
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--navy);
+  }
+  .option-label:hover { border-color: var(--navy-light); background: #eef3fb; }
+  .option-label input[type="radio"] { margin-top: 2px; accent-color: var(--navy-light); flex-shrink: 0; }
+  .option-label.selected { border-color: var(--navy-light); background: #dbeafe; }
+  .option-letter {
+    font-weight: bold;
+    color: var(--navy-light);
+    min-width: 18px;
+    font-size: 13px;
+  }
+
+  /* Nav */
+  .nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+  .btn-nav {
+    background: var(--gray-light);
+    color: var(--navy);
+    border: 2px solid var(--gray-mid);
+    border-radius: 8px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-nav:hover { border-color: var(--navy-light); background: #eef3fb; }
+  .btn-nav:disabled { opacity: 0.35; cursor: not-allowed; }
+
+  /* Question grid navigator */
+  .q-grid-title {
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    color: var(--gray-text);
+    margin-bottom: 8px;
+    font-weight: bold;
+  }
+  .q-grid {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px;
+  }
+  .q-dot {
+    width: 30px; height: 30px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-family: 'Arial', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border: 2px solid var(--gray-mid);
+    background: var(--gray-light);
+    color: var(--gray-text);
+    transition: all 0.15s;
+  }
+  .q-dot.answered { background: var(--navy-light); color: var(--white); border-color: var(--navy-light); }
+  .q-dot.current  { border-color: var(--gold); box-shadow: 0 0 0 2px var(--gold-light); }
+  .q-dot:hover    { border-color: var(--navy-mid); }
+
+  /* Submit area */
+  .submit-area { margin-top: 24px; }
+  .submit-info {
+    font-size: 12.5px;
+    font-family: 'Arial', sans-serif;
+    color: var(--gray-text);
+    margin-bottom: 12px;
+    text-align: center;
+  }
+  .unanswered-warn {
+    background: #fef3c7;
+    border: 1.5px solid var(--gold);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    font-family: 'Arial', sans-serif;
+    color: #92400e;
+    margin-bottom: 12px;
+    display: none;
+  }
+
+  /* ── RESULT SCREEN ── */
+  .result-hero {
+    text-align: center;
+    padding: 24px 0 20px;
+  }
+  .score-circle {
+    width: 130px; height: 130px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border: 5px solid var(--gold);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    margin: 0 auto 16px;
+    box-shadow: 0 6px 28px rgba(13,34,67,0.35);
+  }
+  .score-number { font-size: 38px; font-weight: bold; color: var(--gold-light); line-height: 1; }
+  .score-label  { font-size: 12px; color: var(--gray-mid); font-family: 'Arial', sans-serif; margin-top: 2px; }
+  .predikat-badge {
+    display: inline-block;
+    padding: 6px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    margin-bottom: 8px;
+  }
+  .predikat-sangat-baik { background: #d1fae5; color: #065f46; }
+  .predikat-baik        { background: #dbeafe; color: #1e40af; }
+  .predikat-cukup       { background: #fef3c7; color: #92400e; }
+  .predikat-penguatan   { background: #fce7f3; color: #9d174d; }
+  .predikat-pembinaan   { background: #fee2e2; color: #991b1b; }
+
+  .peserta-name { font-size: 20px; font-weight: bold; color: var(--navy); margin-bottom: 4px; }
+  .peserta-unit { font-size: 13px; color: var(--gray-text); font-family: 'Arial', sans-serif; }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .stat-box {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 14px 10px;
+    text-align: center;
+  }
+  .stat-val { font-size: 22px; font-weight: bold; color: var(--navy); }
+  .stat-key { font-size: 11px; color: var(--gray-text); font-family: 'Arial', sans-serif; margin-top: 3px; }
+
+  .rekomendasi-box {
+    background: var(--gold-pale);
+    border-left: 4px solid var(--gold);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 16px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: #4a3800;
+    line-height: 1.7;
+    margin-top: 16px;
+  }
+  .rekomendasi-box strong { color: var(--navy); display: block; margin-bottom: 4px; }
+
+  .recorded-msg {
+    background: #d1fae5;
+    border: 1.5px solid #10b981;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: #065f46;
+    margin-top: 12px;
+    text-align: center;
+    display: none;
+  }
+  .error-msg {
+    background: #fee2e2;
+    border: 1.5px solid #ef4444;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-family: 'Arial', sans-serif;
+    font-size: 13px;
+    color: #991b1b;
+    margin-top: 12px;
+    text-align: center;
+    display: none;
+  }
+
+  /* Hidden */
+  .screen { display: none; }
+  .screen.active { display: block; }
+
+  /* Footer */
+  .app-footer {
+    text-align: center;
+    padding: 16px;
+    font-family: 'Arial', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 20px 14px; }
+    .q-dot { width: 26px; height: 26px; font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════ -->
+<header class="app-header">
+  <div class="logo-circle">🏛️</div>
+  <div class="header-text">
+    <div class="header-title">Uji Pemahaman Budaya Kerja ASN</div>
+    <div class="header-sub">BBWS Mesuji Sekampung · Ditjen SDA · Kementerian PU</div>
+  </div>
+  <div class="timer-badge" id="timerDisplay" style="display:none">45:00</div>
+</header>
+
+<div class="main">
+
+  <!-- ═══════════════════ SCREEN 1: REGISTRASI ═══════════════════ -->
+  <div id="screenReg" class="screen active">
+    <div class="card">
+      <div class="reg-title">📋 Identitas Peserta</div>
+      <div class="reg-subtitle">
+        Lengkapi data identitas Anda sebelum memulai kuis. Data ini akan direkam secara otomatis ke sistem.
+      </div>
+      <div class="info-box">
+        <h4>📌 Informasi Kuis</h4>
+        <ul>
+          <li>50 soal pilihan ganda (A–E)</li>
+          <li>Waktu pengerjaan: <strong>60 menit</strong></li>
+          <li>Poin berbeda sesuai tingkat kesulitan (1–4 poin)</li>
+          <li>Skor dikonversi ke skala 0–100</li>
+          <li>Soal dan pilihan diacak setiap sesi</li>
+          <li>Jawaban tidak dapat diubah setelah submit</li>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputNama">Nama Lengkap *</label>
+        <input class="form-input" type="text" id="inputNama" placeholder="Masukkan nama lengkap Anda">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputNIP">NIP / NIK *</label>
+        <input class="form-input" type="text" id="inputNIP" placeholder="Contoh: 199001012015031001">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="inputUnit">Unit Kerja *</label>
+        <input class="form-input" type="text" id="inputUnit" placeholder="Contoh: Bagian Tata Usaha / Bidang OP">
+      </div>
+      <button class="btn btn-primary" id="btnMulai" onclick="mulaiKuis()">▶ Mulai Kuis</button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SCREEN 2: KUIS ═══════════════════ -->
+  <div id="screenKuis" class="screen">
+    <!-- Progress -->
+    <div class="card" style="padding:16px 22px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+        <span style="font-size:13px;font-weight:bold;font-family:'Arial',sans-serif;color:var(--navy-mid);">Progress Pengerjaan</span>
+        <span style="font-size:13px;font-family:'Arial',sans-serif;color:var(--navy-mid);" id="progressLabel">0 / 50 dijawab</span>
+      </div>
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar" style="width:0%"></div></div>
+    </div>
+
+    <!-- Navigasi soal -->
+    <div class="card" style="padding:16px 22px;">
+      <div class="q-grid-title">Navigasi Soal (● = sudah dijawab)</div>
+      <div class="q-grid" id="qGrid"></div>
+    </div>
+
+    <!-- Soal aktif -->
+    <div class="card" id="questionCard">
+      <div class="q-header">
+        <div class="q-meta" id="qMeta"></div>
+        <div class="q-number" id="qNum"></div>
+      </div>
+      <div class="q-text" id="qText"></div>
+      <div class="options" id="qOptions"></div>
+      <div class="nav-bar">
+        <button class="btn-nav" id="btnPrev" onclick="navigateTo(currentQ-1)">← Sebelumnya</button>
+        <button class="btn-nav" id="btnNext" onclick="navigateTo(currentQ+1)">Berikutnya →</button>
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="card submit-area">
+      <div class="unanswered-warn" id="warnUnanswered"></div>
+      <div class="submit-info" id="submitInfo"></div>
+      <button class="btn btn-primary" id="btnSubmit" onclick="submitKuis()" style="background:linear-gradient(135deg,#065f46 0%,#10b981 100%)">
+        ✅ Selesai &amp; Lihat Hasil
+      </button>
+    </div>
+  </div>
+
+  <!-- ═══════════════════ SCREEN 3: HASIL ═══════════════════ -->
+  <div id="screenHasil" class="screen">
+    <div class="card">
+      <div class="result-hero">
+        <div class="score-circle">
+          <div class="score-number" id="resSkor">0</div>
+          <div class="score-label">dari 100</div>
+        </div>
+        <div class="predikat-badge" id="resPrBadge">—</div>
+        <div class="peserta-name" id="resNama">—</div>
+        <div class="peserta-unit" id="resUnit">—</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-box"><div class="stat-val" id="resBenar">0</div><div class="stat-key">Jawaban Benar</div></div>
+        <div class="stat-box"><div class="stat-val" id="resDijawab">0</div><div class="stat-key">Soal Dijawab</div></div>
+        <div class="stat-box"><div class="stat-val">50</div><div class="stat-key">Total Soal</div></div>
+        <div class="stat-box"><div class="stat-val" id="resDurasi">—</div><div class="stat-key">Durasi</div></div>
+      </div>
+
+      <div class="rekomendasi-box">
+        <strong>📝 Rekomendasi Pembinaan:</strong>
+        <span id="resRekomendasi">—</span>
+      </div>
+      <div class="recorded-msg" id="recordedMsg">✅ Hasil telah direkam ke sistem.</div>
+      <div class="error-msg" id="errorMsg">⚠️ Gagal mengirim data. Hubungi pengelola sistem.</div>
+    </div>
+  </div>
+
+</div>
+<div class="app-footer">© 2025 BBWS Mesuji Sekampung · Ditjen SDA · Kementerian PU</div>
+
+<script>
+// ═══════════════════════════════════════════════
+//  KONFIGURASI
+// ═══════════════════════════════════════════════
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbybrA5mLSjIwkaMuOSjCft3UpkacYrAUSmOnZ6jzpEyZ_0ICBqYuCI5vuhslsUpD5gGtw/exec";
+const DURASI_DETIK = 60 * 60;
+
+// ═══════════════════════════════════════════════
+//  BANK SOAL (50 soal)
+// ═══════════════════════════════════════════════
+const bankSoal = [
+  // ─── TABIK PUN (10 soal) ───
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Kepala subbagian menerima bingkisan dari rekanan proyek senilai Rp 150.000 dengan alasan 'tanda terima kasih atas kelancaran pekerjaan'. Berdasarkan prinsip TABIK PUN (Ikhtiarkan Anti Korupsi), tindakan paling tepat adalah...",
+    opsi: [
+      "Menerima bingkisan tersebut karena nilainya di bawah batas kewajaran.",
+      "Menerima dan segera melaporkan kepada atasan sebagai formalitas.",
+      "Menolak bingkisan dan menjelaskan bahwa ASN tidak diperkenankan menerima gratifikasi dalam bentuk apapun dari rekanan.",
+      "Menerima bingkisan untuk menghindari kesan tidak menghargai rekanan.",
+      "Mengembalikan bingkisan hanya jika nilai melebihi Rp 500.000."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang staf BBWS menemukan teman sejawatnya secara rutin memanipulasi data absensi elektronik dengan menitipkan sidik jari kepada rekan. Tindakan yang paling sesuai dengan nilai TABIK PUN adalah...",
+    opsi: [
+      "Diam karena tidak ingin merusak hubungan pertemanan.",
+      "Menegur secara langsung dan bila berlanjut, melaporkan melalui saluran pengaduan internal yang tersedia.",
+      "Ikut melakukan hal serupa karena dianggap sudah menjadi kebiasaan di unit tersebut.",
+      "Melaporkan langsung ke media tanpa prosedur internal terlebih dahulu.",
+      "Mengancam rekan tersebut agar memberikan kompensasi."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "TABIK PUN merupakan motto BBWS Mesuji Sekampung. Huruf 'T' pada kata TABIK merujuk pada...",
+    opsi: [
+      "Transparan dalam Setiap Tindakan.",
+      "Tegakkan Aturan Bersama.",
+      "Tanggung jawab dalam Pekerjaan.",
+      "Tertib Administrasi Birokrasi.",
+      "Tata Kelola yang Baik dan Benar."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Dalam rangka pembangunan zona integritas menuju WBK, suatu unit kerja diminta menyusun pakta integritas. Kepala bidang meminta staf untuk membuat pakta yang hanya 'formalitas'. Sebagai agen perubahan yang memahami TABIK PUN, sikap Anda yang paling tepat adalah...",
+    opsi: [
+      "Mengikuti perintah atasan karena hierarki harus dihormati.",
+      "Membuat pakta integritas yang hanya berisi tanda tangan tanpa sosialisasi.",
+      "Menyusun pakta integritas secara substantif, mensosialisasikan isinya, dan mendorong implementasi nyata di unit kerja.",
+      "Menolak membuat pakta integritas karena dianggap tidak relevan.",
+      "Menyerahkan sepenuhnya kepada tim ZI tanpa keterlibatan aktif."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN BBWS menerima permintaan dari masyarakat untuk mempercepat proses izin penggunaan sumber daya air tanpa antrean dengan imbalan tertentu. Sikap yang benar berdasarkan nilai Pelayanan Terbaik untuk Negeri adalah...",
+    opsi: [
+      "Menerima imbalan agar proses bisa lebih cepat.",
+      "Menolak imbalan dan memproses permohonan sesuai urutan dan prosedur yang berlaku.",
+      "Menolak imbalan namun tetap mendahulukan permohonan tersebut atas dasar rasa kasihan.",
+      "Menyarankan masyarakat menghubungi rekanan yang bisa membantu proses.",
+      "Mengabaikan permohonan tersebut karena terindikasi niat suap."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Kepala seksi mengetahui bahwa anggaran perjalanan dinas di unitnya digunakan untuk kegiatan yang tidak berkaitan dengan tugas jabatan. Berdasarkan prinsip anti korupsi dalam TABIK PUN, langkah pertama yang harus dilakukan adalah...",
+    opsi: [
+      "Melaporkan langsung ke KPK tanpa proses internal.",
+      "Membiarkan karena bukan bagian dari tugasnya.",
+      "Mendokumentasikan temuan, kemudian melaporkan kepada atasan atau pengawas internal secara resmi.",
+      "Membahas di grup WhatsApp pegawai agar menjadi perhatian bersama.",
+      "Menunggu audit Itjen sebelum mengambil langkah apapun."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Dalam pelaksanaan pelayanan publik di loket BBWS, masyarakat mengeluh bahwa petugas sering tidak berada di tempat pada jam kerja. Nilai TABIK PUN yang paling relevan untuk mengatasi permasalahan ini adalah...",
+    opsi: [
+      "Pelayanan Terbaik untuk Negeri dengan penerapan standar jam pelayanan yang konsisten.",
+      "Ikhtiarkan Anti Korupsi dengan menindak petugas yang bolos.",
+      "Tegakkan Aturan Bersama melalui sidang kepegawaian segera.",
+      "Melaporkan ke Inspektorat Jenderal.",
+      "Membuat kebijakan rotasi petugas secara acak."
+    ],
+    jawaban: 0
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang pejabat pengadaan menemukan bahwa dokumen lelang dirancang sedemikian rupa sehingga hanya satu kontraktor tertentu yang bisa memenuhi spesifikasi. Dilihat dari prinsip TABIK PUN, kondisi ini berpotensi melanggar...",
+    opsi: [
+      "Hanya norma kesopanan kantor.",
+      "Prinsip Pelayanan Terbaik saja.",
+      "Prinsip Ikhtiarkan Anti Korupsi karena terindikasi pengaturan lelang (bid rigging) yang merugikan keuangan negara.",
+      "Tidak ada pelanggaran selama pemenang sudah ditunjuk pejabat berwenang.",
+      "Hanya melanggar aturan LKPP secara administratif."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Singkatan PUN dalam TABIK PUN merujuk pada...",
+    opsi: [
+      "Pelaksanaan Upaya Nasional.",
+      "Pelayanan Terbaik untuk Negeri.",
+      "Penegakan Undang-Undang Nomor satu.",
+      "Peran Utama Nusantara.",
+      "Program Unggulan Nasional."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "TABIK PUN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN menggunakan kendaraan dinas untuk keperluan pribadi di luar jam kerja dan hari libur tanpa izin. Dari sisi nilai TABIK PUN, tindakan tersebut melanggar...",
+    opsi: [
+      "Tidak ada pelanggaran jika kendaraan tidak rusak.",
+      "Tegakkan Aturan Bersama, karena penggunaan aset negara harus sesuai ketentuan.",
+      "Hanya etika pergaulan kantor.",
+      "Nilai pelayanan publik karena mengurangi ketersediaan kendaraan.",
+      "Hanya melanggar jika ada laporan masyarakat."
+    ],
+    jawaban: 1
+  },
+
+  // ─── BerAKHLAK (15 soal) ───
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Nilai BerAKHLAK yang mendorong ASN untuk terus belajar dan meningkatkan kompetensi diri dalam rangka memberikan pelayanan terbaik adalah...",
+    opsi: [
+      "Harmonis",
+      "Loyal",
+      "Kompeten",
+      "Adaptif",
+      "Kolaboratif"
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang PPK di BBWS diminta oleh atasannya untuk memanipulasi laporan kemajuan pekerjaan agar terlihat lebih baik dari kondisi aktual. Nilai BerAKHLAK yang paling relevan untuk menolak perintah tersebut adalah...",
+    opsi: [
+      "Loyal, karena harus setia kepada negara bukan perintah melawan hukum.",
+      "Adaptif, karena harus menyesuaikan diri.",
+      "Harmonis, karena harus menjaga hubungan baik.",
+      "Kolaboratif, karena harus bekerja sama.",
+      "Kompeten, karena tidak memiliki keahlian manipulasi."
+    ],
+    jawaban: 0
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Di unit kerja terdapat konflik antara dua staf dari latar belakang berbeda yang memengaruhi produktivitas tim. Sebagai koordinator yang menerapkan nilai Harmonis, langkah yang paling tepat adalah...",
+    opsi: [
+      "Memihak salah satu staf yang lebih senior.",
+      "Membiarkan konflik mereda dengan sendirinya.",
+      "Memfasilitasi dialog terbuka, mengidentifikasi akar masalah, dan mencari solusi yang diterima semua pihak.",
+      "Melaporkan keduanya ke bagian kepegawaian.",
+      "Memindahkan salah satu staf ke unit lain tanpa mediasi."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang analis di BBWS diminta mengerjakan tugas baru menggunakan sistem informasi yang belum pernah dipelajari sebelumnya. Atasan membutuhkan output dalam 3 hari. Respons yang paling mencerminkan nilai Adaptif dan Kompeten secara bersamaan adalah...",
+    opsi: [
+      "Menolak karena tidak dalam job description.",
+      "Menyanggupi tanpa usaha belajar sistem baru dan berharap bisa ditunda.",
+      "Segera mempelajari sistem baru secara mandiri, meminta bimbingan rekan yang menguasai, dan menyampaikan perkembangan kepada atasan secara transparan.",
+      "Mendelegasikan seluruh pekerjaan kepada staf bawahan.",
+      "Meminta tambahan waktu 2 minggu tanpa penjelasan."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN BBWS menggunakan media sosial untuk menyebarkan konten yang mengkritik kebijakan pemerintah secara terbuka dan provokatif. Nilai BerAKHLAK yang dilanggar adalah...",
+    opsi: [
+      "Kompeten",
+      "Adaptif",
+      "Loyal, karena ASN wajib menjaga reputasi institusi dan tidak bersikap kontraproduktif terhadap kebijakan pemerintah.",
+      "Kolaboratif",
+      "Berorientasi Pelayanan"
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Nilai 'Berorientasi Pelayanan' dalam BerAKHLAK mendorong ASN untuk...",
+    opsi: [
+      "Mengutamakan kepentingan diri sendiri.",
+      "Memahami dan memenuhi kebutuhan masyarakat dengan ramah, cepat, dan solusi terbaik.",
+      "Meningkatkan pendapatan di luar gaji pokok.",
+      "Menghindari interaksi langsung dengan masyarakat.",
+      "Bekerja sesuai jam minimum yang ditentukan."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Bidang Operasi dan Pemeliharaan BBWS memiliki program inovatif yang membutuhkan data dari Bidang Perencanaan. Namun Kepala Bidang Perencanaan enggan berbagi data karena alasan 'ego sektoral'. Nilai BerAKHLAK yang seharusnya mendorong perubahan ini adalah...",
+    opsi: [
+      "Akuntabel, karena masing-masing bidang harus bertanggung jawab sendiri.",
+      "Kolaboratif, karena ASN harus sinergi lintas unit untuk hasil yang lebih baik.",
+      "Adaptif, karena harus menyesuaikan diri dengan kondisi.",
+      "Loyal, karena mengikuti kebijakan kepala bidang adalah keharusan.",
+      "Kompeten, karena setiap bidang harus mandiri secara profesional."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang staf tidak segera melaporkan kerusakan pompa irigasi yang ditemukannya saat inspeksi rutin karena takut disalahkan. Nilai BerAKHLAK yang dilanggar adalah...",
+    opsi: [
+      "Kompeten",
+      "Akuntabel, karena ASN bertanggung jawab melaporkan temuan yang berpotensi merugikan layanan publik.",
+      "Adaptif",
+      "Harmonis",
+      "Loyal"
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "BBWS menerima keluhan masyarakat terdampak banjir yang membutuhkan respons cepat lintas bidang. Kepala Balai memerintahkan pembentukan tim lintas bidang. Namun beberapa pejabat menolak bergabung dengan alasan 'sudah ada tim lain'. Nilai BerAKHLAK mana yang paling terlanggar dan bagaimana seharusnya?",
+    opsi: [
+      "Hanya Adaptif yang dilanggar; solusinya adalah pelatihan manajemen perubahan.",
+      "Kolaboratif dan Berorientasi Pelayanan dilanggar; seharusnya setiap ASN mengedepankan kebutuhan masyarakat di atas ego sektoral.",
+      "Hanya Loyal yang dilanggar karena tidak taat kepada perintah atasan.",
+      "Tidak ada pelanggaran; menolak tugas tambahan adalah hak ASN.",
+      "Hanya Akuntabel yang dilanggar; solusinya adalah audit kinerja individu."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang pejabat fungsional analis SDA menemukan metode baru yang lebih efisien untuk menghitung debit andalan. Sikap yang mencerminkan nilai Adaptif adalah...",
+    opsi: [
+      "Mengabaikan metode baru karena metode lama sudah cukup.",
+      "Menolak perubahan karena dapat memunculkan risiko.",
+      "Mempelajari metode baru, mengujinya, dan bila terbukti lebih baik, mengusulkan adopsi metode tersebut.",
+      "Menunggu instruksi resmi dari pusat sebelum mencoba metode baru.",
+      "Menggunakan metode baru secara diam-diam tanpa sepengetahuan atasan."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Nilai 'Akuntabel' dalam BerAKHLAK mengharuskan ASN untuk...",
+    opsi: [
+      "Bertanggung jawab atas pekerjaan, menggunakan sumber daya secara efisien, dan tidak menyalahgunakan wewenang.",
+      "Hanya melaporkan hasil pekerjaan kepada atasan setiap hari.",
+      "Mempublikasikan semua dokumen kerja kepada masyarakat.",
+      "Menghindari pengambilan keputusan yang berisiko.",
+      "Mendelegasikan semua tanggung jawab kepada staf bawahan."
+    ],
+    jawaban: 0
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Masyarakat menyampaikan pengaduan di media sosial mengenai kondisi saluran irigasi yang rusak parah. Respons ASN BBWS yang mencerminkan nilai Berorientasi Pelayanan secara optimal adalah...",
+    opsi: [
+      "Melaporkan akun pengadu kepada platform media sosial.",
+      "Mengabaikan karena pengaduan harus melalui jalur formal.",
+      "Merespons secara profesional di platform tersebut, berterima kasih atas laporan, lalu menindaklanjuti secara nyata melalui mekanisme OP yang berlaku.",
+      "Meminta masyarakat datang langsung ke kantor BBWS.",
+      "Memberi pernyataan bahwa saluran tersebut bukan aset BBWS."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Dalam rapat koordinasi lintas instansi mengenai penanggulangan banjir, wakil BBWS cenderung pasif dan tidak menyampaikan data teknis yang dimiliki. Nilai BerAKHLAK mana yang paling perlu ditingkatkan?",
+    opsi: [
+      "Harmonis",
+      "Kompeten dan Kolaboratif, karena kontribusi aktif berbasis keahlian adalah wujud nyata sinergi.",
+      "Loyal",
+      "Adaptif",
+      "Akuntabel"
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Kepala BBWS meminta seluruh ASN mengikuti pelatihan transformasi digital. Seorang staf senior merasa pelatihan tidak relevan karena 'sudah lama bekerja'. Tindakan yang menunjukkan internalisasi nilai BerAKHLAK secara menyeluruh adalah...",
+    opsi: [
+      "Mengikuti pelatihan hanya agar daftar hadir terpenuhi.",
+      "Menolak mengikuti pelatihan karena bukan kewajiban jabatannya.",
+      "Mengikuti pelatihan dengan sungguh-sungguh (Kompeten), menghormati kebijakan pimpinan (Loyal), berbagi pengetahuan pasca pelatihan dengan rekan (Kolaboratif), dan membuka diri terhadap cara kerja baru (Adaptif).",
+      "Meminta dispensasi mengikuti pelatihan dengan alasan beban kerja.",
+      "Mengikuti pelatihan lalu mengkritik hasilnya di media sosial."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "BerAKHLAK",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang ASN menerima hadiah dari rekan kerja saat ulang tahun. Nilai 'Akuntabel' dalam konteks ini mengharuskan ASN untuk...",
+    opsi: [
+      "Menerima hadiah karena bukan dari rekanan atau pihak yang berkepentingan.",
+      "Menolak semua hadiah dalam situasi apapun tanpa terkecuali.",
+      "Mempertimbangkan apakah pemberi hadiah memiliki kepentingan terkait jabatannya; jika tidak, hadiah dari rekan sesama ASN dalam jumlah wajar umumnya tidak bermasalah namun tetap perlu waspada.",
+      "Melaporkan hadiah tersebut ke KPK.",
+      "Menyerahkan hadiah kepada atasan sebagai tanda hormat."
+    ],
+    jawaban: 2
+  },
+
+  // ─── KODE ETIK & KODE PERILAKU (15 soal) ───
+  {
+    kategori: "Kode Etik",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "ASN yang menjaga kerahasiaan informasi yang bersifat rahasia jabatan dan hanya menggunakannya untuk kepentingan dinas adalah penerapan dari...",
+    opsi: [
+      "Kode Perilaku terkait netralitas ASN.",
+      "Kode Etik terkait menjaga rahasia jabatan dan tidak menyalahgunakan informasi.",
+      "Kode Etik terkait kewajiban melapor kepada media massa.",
+      "Kode Perilaku terkait penggunaan media sosial.",
+      "Tidak termasuk dalam kode etik manapun."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN memposting foto dokumen rapat internal BBWS yang bersifat terbatas di grup WhatsApp pribadi yang berisi orang-orang di luar instansi. Pelanggaran kode perilaku yang terjadi adalah...",
+    opsi: [
+      "Tidak ada pelanggaran karena media sosial bersifat pribadi.",
+      "Pelanggaran kewajiban menjaga rahasia jabatan dan dokumen terbatas.",
+      "Pelanggaran netralitas karena memengaruhi opini publik.",
+      "Hanya pelanggaran etika pergaulan.",
+      "Pelanggaran disiplin ringan yang tidak berdampak hukum."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Kepala bidang meminta seorang staf analis untuk menyiapkan kajian teknis yang mendukung opsi tertentu dalam perencanaan proyek yang berpotensi menguntungkan pihak ketiga yang terafiliasi dengan pejabat tersebut. Pelanggaran kode etik utama yang terjadi adalah...",
+    opsi: [
+      "Kode etik terkait kompetensi teknis.",
+      "Konflik kepentingan dan penyalahgunaan wewenang jabatan dalam penyusunan dokumen perencanaan.",
+      "Hanya pelanggaran prosedural administrasi.",
+      "Kode perilaku terkait perbedaan pendapat dengan atasan.",
+      "Tidak ada pelanggaran karena kajian merupakan tugas jabatan."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Dalam pemilihan umum, seorang ASN BBWS secara terbuka menyatakan dukungan kepada salah satu calon legislatif di media sosial dengan menggunakan atribut dinas. Pelanggaran kode perilaku yang terjadi adalah...",
+    opsi: [
+      "Pelanggaran kode perilaku penggunaan fasilitas kantor.",
+      "Pelanggaran netralitas ASN dan larangan berpolitik praktis serta penggunaan atribut dinas untuk kepentingan politik.",
+      "Pelanggaran etika berkomunikasi di media sosial saja.",
+      "Tidak ada pelanggaran karena memilih adalah hak pribadi.",
+      "Hanya pelanggaran administrasi kepegawaian."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang staf BBWS diminta rekannya untuk menandatangani dokumen perjalanan dinas atas nama rekan tersebut meskipun ia sendiri tidak ikut perjalanan tersebut. Analisis kode etik dan kode perilaku ASN yang paling tepat terhadap situasi ini adalah...",
+    opsi: [
+      "Boleh dilakukan asalkan ada surat kuasa dari rekan.",
+      "Hanya melanggar SOP administrasi biasa.",
+      "Melanggar kode etik terkait kejujuran, integritas, dan larangan membantu tindakan yang berpotensi merugikan keuangan negara (mark up SPJ).",
+      "Tidak ada pelanggaran jika anggaran tidak terlampaui.",
+      "Hanya melanggar kode perilaku terkait ketidakrapian administrasi."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN berperilaku tidak sopan kepada tamu masyarakat yang datang ke kantor BBWS karena dianggap berpenampilan sederhana. Kode perilaku yang dilanggar adalah...",
+    opsi: [
+      "Tidak ada pelanggaran; kesopanan bersifat subjektif.",
+      "Kode perilaku kewajiban bersikap sopan, santun, dan menghormati setiap pengguna layanan tanpa diskriminasi.",
+      "Hanya kode etik terkait pakaian dinas.",
+      "Kode perilaku terkait penggunaan fasilitas kantor.",
+      "Kode etik terkait kompetensi pelayanan."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang PPK menerima panggilan dari kontraktor yang mengeluh bahwa progres pembayaran termyn lambat. Dalam percakapan tersebut, PPK secara tidak langsung mengisyaratkan bahwa proses bisa dipercepat jika ada 'biaya administrasi'. Pelanggaran kode etik dan hukum yang paling tepat menggambarkan situasi ini adalah...",
+    opsi: [
+      "Hanya pelanggaran etika komunikasi.",
+      "Pelanggaran kode etik integritas dan berpotensi sebagai tindak pidana korupsi berupa pemerasan atau gratifikasi.",
+      "Pelanggaran prosedur pengadaan barang dan jasa biasa.",
+      "Tidak ada pelanggaran karena PPK berwenang mengatur jadwal pembayaran.",
+      "Hanya pelanggaran administratif yang dapat diselesaikan internal."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Kode etik ASN Kementerian PU mewajibkan pegawai untuk menggunakan fasilitas dan kekayaan negara secara...",
+    opsi: [
+      "Bebas sesuai kebutuhan masing-masing pegawai.",
+      "Bertanggung jawab, efisien, dan hanya untuk kepentingan dinas.",
+      "Maksimal untuk meningkatkan produktivitas, termasuk untuk keperluan pribadi.",
+      "Sesuai kebiasaan yang sudah berlaku di unit kerja.",
+      "Sesuai arahan pejabat yang berwenang, apapun kepentingannya."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang atasan melakukan pelecehan verbal terhadap bawahan di depan rekan-rekan kerja. Bawahan yang bersangkutan tidak berani melapor karena khawatir terhadap karir. Dalam konteks kode etik dan perlindungan ASN, langkah paling tepat yang dapat dilakukan oleh rekan yang menyaksikan adalah...",
+    opsi: [
+      "Mengabaikan karena itu urusan pribadi antara atasan dan bawahan.",
+      "Menyampaikan kepada bawahan agar mengundurkan diri jika tidak tahan.",
+      "Mendorong korban untuk melaporkan melalui saluran pengaduan resmi dan bersedia menjadi saksi, karena pelanggaran kode etik terhadap martabat ASN wajib ditindaklanjuti.",
+      "Membalas pelecehan kepada atasan secara terbuka.",
+      "Memviralkan kejadian di media sosial sebagai bentuk solidaritas."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN BBWS memiliki usaha sampingan yang menggunakan nama instansi untuk menarik pelanggan. Pelanggaran kode etik yang terjadi adalah...",
+    opsi: [
+      "Tidak ada pelanggaran karena usaha sampingan adalah hak ASN.",
+      "Penyalahgunaan nama instansi untuk kepentingan pribadi dan berpotensi melanggar larangan konflik kepentingan.",
+      "Hanya pelanggaran pajak penghasilan.",
+      "Pelanggaran kode perilaku terkait pakaian dinas.",
+      "Tidak diatur dalam kode etik ASN."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang pejabat BBWS diminta berbicara dalam seminar yang diselenggarakan oleh perusahaan swasta yang sedang dalam proses lelang proyek BBWS. Aspek kode etik yang paling perlu diperhatikan adalah...",
+    opsi: [
+      "Tidak ada masalah selama berbicara sebagai pribadi bukan atas nama instansi.",
+      "Potensi konflik kepentingan karena ada hubungan dengan pihak yang terlibat dalam proses pengadaan aktif.",
+      "Hanya perlu izin atasan langsung.",
+      "Tidak diatur dalam kode etik instansi.",
+      "Masalah hanya timbul jika dibayar oleh perusahaan tersebut."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Dalam berpakaian dinas, ASN Kementerian PU wajib...",
+    opsi: [
+      "Berpakaian bebas rapi sesuai selera masing-masing.",
+      "Mengikuti ketentuan seragam yang ditetapkan dan tampil dengan rapi, bersih, dan sopan.",
+      "Hanya mengenakan pakaian dinas pada hari Senin.",
+      "Memakai pakaian dinas hanya saat ada tamu atau kunjungan.",
+      "Berpakaian bebas asal bukan kaos."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang analis menemukan bahwa laporan teknis yang disusun oleh konsultan untuk proyek BBWS mengandung data yang tidak akurat dan berpotensi mengakibatkan perencanaan yang salah. Atasan meminta laporan tersebut diterima dan ditandatangani 'agar proses tidak terganggu'. Kode etik yang paling relevan untuk situasi ini adalah...",
+    opsi: [
+      "Kode etik terkait ketaatan kepada atasan; laporan harus ditandatangani.",
+      "Tidak ada pelanggaran; analis hanya bertanggung jawab atas tugasnya sendiri.",
+      "Kode etik integritas dan akuntabilitas profesional; analis berkewajiban menyampaikan keberatan secara tertulis dan tidak menandatangani dokumen yang diketahui tidak akurat.",
+      "Hanya masalah prosedur teknis pengadaan.",
+      "Kode etik terkait hubungan dengan konsultan eksternal saja."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang ASN memiliki akses ke sistem informasi kepegawaian. Ia mengakses data pribadi rekan kerjanya tanpa keperluan dinas yang jelas. Pelanggaran kode perilaku yang terjadi adalah...",
+    opsi: [
+      "Tidak ada pelanggaran karena ia memiliki akses resmi.",
+      "Pelanggaran kewajiban menjaga kerahasiaan data pribadi dan penyalahgunaan akses sistem.",
+      "Hanya pelanggaran kebijakan TI internal.",
+      "Pelanggaran kode etik terkait kompetensi digital.",
+      "Tidak diatur dalam peraturan kepegawaian."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Kode Etik",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang staf administrasi BBWS mengetahui informasi tentang mutasi jabatan yang belum diumumkan resmi. Ia menceritakan informasi tersebut kepada rekan-rekan di luar unit kerjanya. Kode etik yang dilanggar adalah...",
+    opsi: [
+      "Tidak ada pelanggaran; mutasi bukan rahasia negara.",
+      "Kode etik menjaga kerahasiaan informasi jabatan dan tidak menyebarkan informasi yang belum resmi diumumkan, yang dapat menimbulkan spekulasi dan ketidakstabilan.",
+      "Kode perilaku terkait penggunaan media sosial saja.",
+      "Hanya pelanggaran etika pergaulan informal.",
+      "Kode etik terkait netralitas."
+    ],
+    jawaban: 1
+  },
+
+  // ─── DISIPLIN ASN PP 94/2021 (10 soal) ───
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Berdasarkan PP 94 Tahun 2021, yang dimaksud dengan disiplin PNS adalah...",
+    opsi: [
+      "Ketaatan PNS terhadap perintah atasan langsung dalam segala hal.",
+      "Kesanggupan PNS untuk menaati kewajiban dan menghindari larangan yang ditentukan dalam peraturan perundang-undangan.",
+      "Kemampuan PNS untuk bekerja mandiri tanpa pengawasan.",
+      "Kepatuhan PNS terhadap peraturan kepegawaian saja.",
+      "Ketaatan PNS dalam mengikuti pelatihan yang diwajibkan."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang PNS tidak masuk kerja tanpa keterangan selama 5 hari kerja berturut-turut. Berdasarkan PP 94/2021, kategori hukuman disiplin yang tepat adalah...",
+    opsi: [
+      "Hukuman disiplin ringan berupa teguran lisan.",
+      "Hukuman disiplin sedang karena tidak masuk 5–10 hari kerja termasuk kategori sedang.",
+      "Hukuman disiplin ringan berupa teguran tertulis karena belum mencapai 6 hari.",
+      "Tidak ada sanksi karena belum 7 hari.",
+      "Hukuman disiplin berat berupa pemberhentian."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang Kepala Sub Bagian BBWS terbukti menggunakan anggaran perjalanan dinas untuk keperluan pribadi sebesar Rp 8 juta. Sesuai PP 94/2021, jenis hukuman disiplin yang paling tepat berdasarkan tingkat pelanggarannya adalah...",
+    opsi: [
+      "Teguran lisan karena masih di bawah Rp 10 juta.",
+      "Teguran tertulis karena pertama kali melanggar.",
+      "Hukuman disiplin sedang hingga berat karena menyalahgunakan wewenang dan merugikan keuangan negara, yang termasuk pelanggaran berat.",
+      "Tidak ada sanksi jika uang dikembalikan.",
+      "Hukuman disiplin ringan berupa pernyataan tidak puas atasan."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang PNS BBWS terbukti melakukan pelanggaran disiplin berat. Pejabat yang berwenang memberikan hukuman disiplin berupa pemberhentian tidak dengan hormat (PTDH) adalah...",
+    opsi: [
+      "Kepala Sub Bagian TU atas nama Kepala Balai.",
+      "Presiden untuk semua jenjang PNS.",
+      "Pejabat Pembina Kepegawaian (PPK) yaitu Menteri PUPR untuk PNS Kementerian PUPR, atau pejabat yang mendapat pelimpahan wewenang sesuai ketentuan.",
+      "Kepala BBWS untuk seluruh PNS di lingkungannya.",
+      "BKN secara langsung tanpa rekomendasi instansi."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "PNS yang tidak menaati ketentuan jam kerja (terlambat masuk, pulang lebih awal, atau meninggalkan pekerjaan selama jam kerja) tanpa izin, sesuai PP 94/2021 diakumulasikan sebagai...",
+    opsi: [
+      "Pelanggaran yang hanya dicatat dalam buku absensi tanpa sanksi.",
+      "Ketidakhadiran yang dikonversi ke jumlah hari dan dikenai hukuman disiplin sesuai akumulasi.",
+      "Pelanggaran ringan yang cukup diselesaikan dengan pembinaan lisan.",
+      "Pelanggaran yang hanya berdampak pada tunjangan kinerja saja.",
+      "Tidak termasuk pelanggaran disiplin selama tidak absen sehari penuh."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Dalam proses pemeriksaan pelanggaran disiplin, PNS yang diperiksa berhak untuk...",
+    opsi: [
+      "Menolak pemeriksaan karena merasa tidak bersalah.",
+      "Menyampaikan keterangan dan pembelaan diri secara tertulis maupun lisan dalam proses pemeriksaan.",
+      "Diwakili kuasa hukum tanpa hadir sendiri.",
+      "Meminta penundaan pemeriksaan tanpa batas waktu.",
+      "Mengajukan protes kepada BKN tanpa melalui proses internal."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Mudah", poin: 1,
+    pertanyaan: "Sesuai PP 94/2021, hukuman disiplin ringan terdiri dari...",
+    opsi: [
+      "Teguran lisan, teguran tertulis, dan pernyataan tidak puas secara tertulis.",
+      "Penundaan kenaikan pangkat dan penurunan jabatan.",
+      "Pemberhentian sementara dan pemotongan gaji.",
+      "Pemberhentian dengan hormat atas permintaan sendiri.",
+      "Pemindahan jabatan dan penurunan golongan."
+    ],
+    jawaban: 0
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sangat Sulit", poin: 4,
+    pertanyaan: "Seorang PNS mengajukan keberatan atas hukuman disiplin yang dijatuhkan. Sesuai PP 94/2021, mekanisme keberatan yang tepat adalah...",
+    opsi: [
+      "Mengajukan keberatan langsung ke pengadilan tata usaha negara.",
+      "Mengajukan banding administratif kepada atasan pejabat yang menjatuhkan hukuman atau kepada Badan Pertimbangan Kepegawaian (BAPEK) sesuai jenjang dan jenis hukumannya.",
+      "Mengadukan ke Komnas HAM.",
+      "Mengajukan keberatan melalui serikat pekerja.",
+      "Tidak ada mekanisme keberatan dalam PP 94/2021."
+    ],
+    jawaban: 1
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sedang", poin: 2,
+    pertanyaan: "Seorang Kasubbag TU BBWS menemukan bawahannya terlambat masuk kerja lebih dari 7 kali dalam sebulan. Langkah pertama yang tepat sesuai PP 94/2021 adalah...",
+    opsi: [
+      "Langsung menerbitkan SK hukuman disiplin.",
+      "Melaporkan ke BKN.",
+      "Memanggil PNS tersebut, memberikan pembinaan, mendokumentasikan, dan bila berlanjut memproses pelanggaran disiplin sesuai ketentuan.",
+      "Mengabaikan karena sudah menjadi kebiasaan di unit.",
+      "Memindahkan PNS tersebut ke unit lain tanpa proses pemeriksaan."
+    ],
+    jawaban: 2
+  },
+  {
+    kategori: "Disiplin ASN",
+    tingkat: "Sulit", poin: 3,
+    pertanyaan: "Seorang PNS tidak melapor kepada pejabat berwenang mengenai gratifikasi yang diterimanya dari rekanan dalam waktu 30 hari kerja. Berdasarkan PP 94/2021 dan ketentuan gratifikasi, konsekuensi yang dapat terjadi adalah...",
+    opsi: [
+      "Hanya diperingatkan secara lisan.",
+      "Tidak ada konsekuensi selama nilai gratifikasi di bawah Rp 1 juta.",
+      "Dapat dikenai hukuman disiplin karena melanggar kewajiban melaporkan gratifikasi, dan berpotensi diproses secara pidana.",
+      "Hanya dikenai pemotongan tunjangan kinerja.",
+      "Dibebaskan dari kewajiban lapor jika rekanan bukan peserta lelang aktif."
+    ],
+    jawaban: 2
+  }
+];
+
+// ═══════════════════════════════════════════════
+//  STATE
+// ═══════════════════════════════════════════════
+let soalAcak = [];
+let jawabanUser = [];
+let currentQ = 0;
+let timerInterval = null;
+let sisaDetik = DURASI_DETIK;
+let waktuMulai = null;
+let submitted = false;
+let peserta = {};
+
+// ═══════════════════════════════════════════════
+//  UTILITY
+// ═══════════════════════════════════════════════
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function formatTime(s) {
+  const m = Math.floor(s / 60).toString().padStart(2, '0');
+  const ss = (s % 60).toString().padStart(2, '0');
+  return `${m}:${ss}`;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(el => el.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// ═══════════════════════════════════════════════
+//  MULAI KUIS
+// ═══════════════════════════════════════════════
+function mulaiKuis() {
+  const nama = document.getElementById('inputNama').value.trim();
+  const nip  = document.getElementById('inputNIP').value.trim();
+  const unit = document.getElementById('inputUnit').value.trim();
+  if (!nama || !nip || !unit) {
+    alert('⚠️ Mohon lengkapi semua field identitas terlebih dahulu.');
+    return;
+  }
+  peserta = { nama, nip, unit };
+
+  // Acak soal dan opsi
+  soalAcak = shuffle(bankSoal).map(s => {
+    // Acak urutan opsi, simpan jawaban baru
+    const opsiAsal = s.opsi;
+    const indeksBaru = shuffle([0, 1, 2, 3, 4]);
+    const opsiAcak = indeksBaru.map(i => opsiAsal[i]);
+    const jawabanBaru = indeksBaru.indexOf(s.jawaban);
+    return { ...s, opsiAcak, jawabanBaru };
+  });
+
+  jawabanUser = new Array(50).fill(null);
+  currentQ = 0;
+  sisaDetik = DURASI_DETIK;
+  waktuMulai = new Date();
+  submitted = false;
+
+  buildQGrid();
+  renderQuestion(0);
+  startTimer();
+
+  document.getElementById('timerDisplay').style.display = 'block';
+  showScreen('screenKuis');
+}
+
+// ═══════════════════════════════════════════════
+//  TIMER
+// ═══════════════════════════════════════════════
+function startTimer() {
+  const el = document.getElementById('timerDisplay');
+  el.textContent = formatTime(sisaDetik);
+  timerInterval = setInterval(() => {
+    sisaDetik--;
+    el.textContent = formatTime(sisaDetik);
+    if (sisaDetik <= 300) el.classList.add('warning');
+    if (sisaDetik <= 0) {
+      clearInterval(timerInterval);
+      submitKuis(true);
+    }
+  }, 1000);
+}
+
+// ═══════════════════════════════════════════════
+//  BUILD NAVIGATOR GRID
+// ═══════════════════════════════════════════════
+function buildQGrid() {
+  const grid = document.getElementById('qGrid');
+  grid.innerHTML = '';
+  for (let i = 0; i < 50; i++) {
+    const d = document.createElement('div');
+    d.className = 'q-dot';
+    d.id = `dot-${i}`;
+    d.textContent = i + 1;
+    d.onclick = () => navigateTo(i);
+    grid.appendChild(d);
+  }
+}
+
+function updateGrid() {
+  for (let i = 0; i < 50; i++) {
+    const d = document.getElementById(`dot-${i}`);
+    d.className = 'q-dot';
+    if (jawabanUser[i] !== null) d.classList.add('answered');
+    if (i === currentQ) d.classList.add('current');
+  }
+}
+
+// ═══════════════════════════════════════════════
+//  RENDER SOAL
+// ═══════════════════════════════════════════════
+function renderQuestion(idx) {
+  currentQ = idx;
+  const s = soalAcak[idx];
+
+  // Meta badges
+  const tingkatClass = {
+    'Mudah': 'mudah', 'Sedang': 'sedang', 'Sulit': 'sulit', 'Sangat Sulit': 'sangat-sulit'
+  }[s.tingkat] || 'sedang';
+
+  document.getElementById('qMeta').innerHTML = `
+    <span class="badge badge-kategori">${s.kategori}</span>
+    <span class="badge badge-${tingkatClass}">${s.tingkat}</span>
+    <span class="badge badge-poin">${s.poin} poin</span>
+  `;
+  document.getElementById('qNum').textContent = `Soal ${idx + 1} / 50`;
+  document.getElementById('qText').textContent = s.pertanyaan;
+
+  const huruf = ['A', 'B', 'C', 'D', 'E'];
+  const optEl = document.getElementById('qOptions');
+  optEl.innerHTML = '';
+  s.opsiAcak.forEach((opsi, i) => {
+    const lbl = document.createElement('label');
+    lbl.className = 'option-label' + (jawabanUser[idx] === i ? ' selected' : '');
+    lbl.innerHTML = `
+      <input type="radio" name="q${idx}" value="${i}" ${jawabanUser[idx] === i ? 'checked' : ''}>
+      <span class="option-letter">${huruf[i]}.</span>
+      <span>${opsi}</span>
+    `;
+    lbl.querySelector('input').addEventListener('change', () => pilihJawaban(idx, i));
+    optEl.appendChild(lbl);
+  });
+
+  document.getElementById('btnPrev').disabled = idx === 0;
+  document.getElementById('btnNext').disabled = idx === 49;
+
+  updateProgress();
+  updateGrid();
+}
+
+function pilihJawaban(idx, val) {
+  jawabanUser[idx] = val;
+  document.querySelectorAll('.option-label').forEach((lbl, i) => {
+    lbl.classList.toggle('selected', i === val);
+  });
+  updateProgress();
+  updateGrid();
+}
+
+function updateProgress() {
+  const dijawab = jawabanUser.filter(j => j !== null).length;
+  const pct = (dijawab / 50) * 100;
+  document.getElementById('progressBar').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `${dijawab} / 50 dijawab`;
+
+  const sisa = 50 - dijawab;
+  const warn = document.getElementById('warnUnanswered');
+  const info = document.getElementById('submitInfo');
+  if (sisa > 0) {
+    warn.style.display = 'block';
+    warn.textContent = `⚠️ Masih ada ${sisa} soal belum dijawab. Pastikan semua soal telah dijawab sebelum submit.`;
+  } else {
+    warn.style.display = 'none';
+  }
+  info.textContent = `${dijawab} dari 50 soal telah dijawab.`;
+}
+
+function navigateTo(idx) {
+  if (idx < 0 || idx > 49) return;
+  renderQuestion(idx);
+}
+
+// ═══════════════════════════════════════════════
+//  SUBMIT
+// ═══════════════════════════════════════════════
+function submitKuis(autoSubmit = false) {
+  if (submitted) return;
+
+  const dijawab = jawabanUser.filter(j => j !== null).length;
+  if (!autoSubmit && dijawab < 50) {
+    const konfirm = confirm(`Masih ada ${50 - dijawab} soal belum dijawab. Yakin ingin mengakhiri kuis?`);
+    if (!konfirm) return;
+  }
+
+  submitted = true;
+  clearInterval(timerInterval);
+  document.getElementById('btnSubmit').disabled = true;
+  document.getElementById('timerDisplay').style.display = 'none';
+
+  // Hitung skor
+  let totalPoinDapat = 0;
+  let totalPoinMaks = 0;
+  let jumlahBenar = 0;
+
+  soalAcak.forEach((s, i) => {
+    totalPoinMaks += s.poin;
+    if (jawabanUser[i] === s.jawabanBaru) {
+      totalPoinDapat += s.poin;
+      jumlahBenar++;
+    }
+  });
+
+  const skor = Math.round((totalPoinDapat / totalPoinMaks) * 100);
+  const waktuSelesai = new Date();
+  const durasiDetik = Math.round((waktuSelesai - waktuMulai) / 1000);
+  const durasiStr = `${Math.floor(durasiDetik/60)} mnt ${durasiDetik%60} dtk`;
+
+  let predikat, rekomendasiClass, rekomendasi;
+  if (skor >= 90) {
+    predikat = 'Sangat Baik'; rekomendasiClass = 'sangat-baik';
+    rekomendasi = 'Peserta telah memahami dan mampu menerapkan budaya kerja ASN secara sangat baik. Pertahankan dan jadilah role model integritas di unit kerja.';
+  } else if (skor >= 80) {
+    predikat = 'Baik'; rekomendasiClass = 'baik';
+    rekomendasi = 'Peserta telah memahami budaya kerja ASN dengan baik dan perlu menjaga konsistensi penerapan nilai BerAKHLAK dalam keseharian.';
+  } else if (skor >= 70) {
+    predikat = 'Cukup'; rekomendasiClass = 'cukup';
+    rekomendasi = 'Peserta perlu memperkuat pemahaman pada aspek penerapan nilai BerAKHLAK, disiplin, kode etik, dan integritas melalui pembelajaran mandiri.';
+  } else if (skor >= 60) {
+    predikat = 'Perlu Penguatan'; rekomendasiClass = 'penguatan';
+    rekomendasi = 'Peserta disarankan mengikuti kembali materi internalisasi budaya kerja ASN dan bimbingan dari atasan atau agen perubahan di unit kerja.';
+  } else {
+    predikat = 'Perlu Pembinaan'; rekomendasiClass = 'pembinaan';
+    rekomendasi = 'Peserta perlu mendapatkan pembinaan lanjutan dan pendampingan intensif terkait pemahaman budaya kerja, integritas, dan disiplin ASN.';
+  }
+
+  // Tampilkan hasil
+  document.getElementById('resSkor').textContent = skor;
+  const pBadge = document.getElementById('resPrBadge');
+  pBadge.className = `predikat-badge predikat-${rekomendasiClass}`;
+  pBadge.textContent = predikat;
+  document.getElementById('resNama').textContent = peserta.nama;
+  document.getElementById('resUnit').textContent = `${peserta.unit} · NIP/NIK: ${peserta.nip}`;
+  document.getElementById('resBenar').textContent = jumlahBenar;
+  document.getElementById('resDijawab').textContent = dijawab;
+  document.getElementById('resDurasi').textContent = durasiStr;
+  document.getElementById('resRekomendasi').textContent = rekomendasi;
+
+  showScreen('screenHasil');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
+  // Kirim ke Google Sheets
+  kirimData({
+    timestamp: waktuMulai.toISOString(),
+    nama: peserta.nama,
+    nip: peserta.nip,
+    unitKerja: peserta.unit,
+    skor,
+    jumlahBenar,
+    jumlahSoal: dijawab,
+    waktuMulai: waktuMulai.toLocaleString('id-ID'),
+    waktuSelesai: waktuSelesai.toLocaleString('id-ID'),
+    durasiPengerjaan: durasiStr,
+    predikat,
+    rekomendasi
+  });
+}
+
+// ═══════════════════════════════════════════════
+//  KIRIM DATA KE GOOGLE SHEETS
+// ═══════════════════════════════════════════════
+async function kirimData(data) {
+  if (SCRIPT_URL === "PASTE_URL_APPS_SCRIPT_DI_SINI") {
+    console.warn("SCRIPT_URL belum diisi. Data tidak dikirim.");
+    document.getElementById('recordedMsg').style.display = 'block';
+    document.getElementById('recordedMsg').textContent = '⚠️ SCRIPT_URL belum dikonfigurasi. Mode demonstrasi.';
+    return;
+  }
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    const json = await res.json();
+    if (json.status === 'success') {
+      document.getElementById('recordedMsg').style.display = 'block';
+    } else {
+      document.getElementById('errorMsg').style.display = 'block';
+    }
+  } catch (e) {
+    console.error('Gagal kirim data:', e);
+    document.getElementById('errorMsg').style.display = 'block';
+  }
+}
+</script>
+</body>
+</html>
